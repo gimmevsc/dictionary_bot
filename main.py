@@ -7,18 +7,18 @@ from util.gdrive_db import download_database, start_replacing
 from threading import Thread
 
 
-bot = telebot.TeleBot('YOUR_BOT_TOKEN')
+bot = telebot.TeleBot('7049056882:AAGwFBH9Yrv9Ruy81IrdQQmyMeGWJd-0dBw')
 
 
 #Call the function to download the database file from GOogle Drive
-# download_database()
+download_database()
 
-#Create a background thread to run the start_replacing function (replace list.db on Google Drive every 20 minutes (1200))
-# replacing_thread = Thread(target=start_replacing)
-# replacing_thread.start()
+# Create a background thread to run the start_replacing function (replace list.db on Google Drive every 20 minutes (1200))
+replacing_thread = Thread(target=start_replacing)
+replacing_thread.start()
 
     #Create database in folder database if not exists
-create_database()
+# create_database()
 
     #Keyboard buttons and start command
 @bot.message_handler(commands=['start'])
