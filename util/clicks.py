@@ -174,7 +174,7 @@ def click_add_favourite(bot, message):
     # Function to handle the next step after prompting for translation
     def handle_translation_step(message, word):
         
-        translation = message.text.strip()
+        translation = message.text.strip().lower()
 
         if translation and all(char not in translation for char in ['<', '>']):
             conn = sqlite3.connect('database/list.db')
