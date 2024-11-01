@@ -1,49 +1,49 @@
 import time
 import io
+import base64
+import json
 from googleapiclient.http import MediaIoBaseDownload, MediaFileUpload
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
 
-credentials = service_account.Credentials.from_service_account_file('service-account.json')
+# Decode the service account JSON from the .env variable
+service_account_json = os.getenv("SERVICE_ACCOUNT_JSON")
+decoded_json = base64.b64decode(service_account_json).decode("utf-8")
+
+# Parse JSON and create credentials
+credentials_info = json.loads(decoded_json)
+credentials = service_account.Credentials.from_service_account_info(credentials_info)
+
+# Initialize the Google Drive API client
 drive_service = build('drive', 'v3', credentials=credentials)
 
-
-    # Function to download the database file from Google Drive
+# Function to download the database file from Google Drive
 def download_database():
-    file_id = '1lU-SkxZBuObG54NgNallZKMfOEDDhXCo'  # Replace 'YOUR_FILE_ID' with the ID of your database file on Google Drive
+    file_id = '1lU-SkxZBuObG54NgNallZKMfOEDDhXCo'  # Replace with the ID of your database file on Google Drive
     request = drive_service.files().get_media(fileId=file_id)
     fh = io.BytesIO()
     downloader = MediaIoBaseDownload(fh, request)
     done = False
-    while done is False:
+    while not done:
         status, done = downloader.next_chunk()
         print("Download database from Google Drive: %d%%." % int(status.progress() * 100))
     with open('database/list.db', 'wb') as f:
         f.write(fh.getbuffer())
-      
-        
-    #
+
+# Function to replace the list.db file on Google Drive
 def replace_list_db_on_google_drive():
-    SCOPES = ['https://www.googleapis.com/auth/drive']
-    SERVICE_ACCOUNT_FILE = 'service-account.json' 
-
-    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-    drive_service = build('drive', 'v3', credentials=credentials)
-
-    # Replace 'YOUR_FILE_ID' with the ID of the existing list.db file on Google Drive
-    file_id = '1lU-SkxZBuObG54NgNallZKMfOEDDhXCo'
-
+    file_id = '1lU-SkxZBuObG54NgNallZKMfOEDDhXCo'  # Replace with the ID of the existing list.db file on Google Drive
     media = MediaFileUpload('database/list.db', resumable=True)
-
     drive_service.files().update(fileId=file_id, media_body=media).execute()
-
     print('list.db file on Google Drive has been updated.')
-    
 
 # Function to periodically replace list.db on Google Drive
 def start_replacing():
     while True:
         replace_list_db_on_google_drive()
-        n = 600  # Sleep for 600 seconds before the next update
-        time.sleep(n)  
+        time.sleep(600)  # Sleep for 600 seconds before the next update
