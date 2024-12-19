@@ -2,7 +2,7 @@
 
 The bot stores client vocabulary in an SQLite3 database The bot interacts with users on Telegram and processes their requests.
 
-### **@dict1onarybot in Telegram**
+### **@dict1onarybot** in Telegram
 ---
 
 ## **Setup Instructions**
