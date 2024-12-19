@@ -33,6 +33,9 @@ pip install -r requirements.txt
 
 #### 4. Set Up Environment Variables
 ##### Create a .env file in the project root and fill it from .env.example template
+```bash
+cp .env.example .env
+```
 
 #### 5. Run the Bot
 ##### Start the bot by running the following command:
