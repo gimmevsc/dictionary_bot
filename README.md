@@ -6,17 +6,6 @@ The bot stores client vocabulary in an SQLite3 database The bot interacts with u
 
 ## **Setup Instructions**
 
-Follow these steps to set up and run the bot:
-
----
-
-### **1. Prerequisites**
-
-Ensure you have the following installed:
-- **Python 3.8+**
-- **Telegram Bot Token** (create one via [BotFather](https://core.telegram.org/bots#botfather))
-
----
 ### **2. Setup Instructions**
 
 #### 1. Clone the Repository
