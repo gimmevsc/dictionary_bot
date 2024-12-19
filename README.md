@@ -6,8 +6,6 @@ The bot stores client vocabulary in an SQLite3 database The bot interacts with u
 
 ## **Setup Instructions**
 
-### **2. Setup Instructions**
-
 #### 1. Clone the Repository
 
 ```bash
