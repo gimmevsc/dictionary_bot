@@ -31,9 +31,7 @@ pip install -r requirements.txt
 ```
 
 #### 4. Set Up Environment Variables
-##### Create a .env file in the project root and add the following:
-
-TELEGRAM_BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
+##### Create a .env file in the project root and fill it from .env.example template
 
 #### 5. Run the Bot
 ##### Start the bot by running the following command:
