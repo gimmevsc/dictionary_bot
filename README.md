@@ -4,14 +4,6 @@ The bot stores client vocabulary in an SQLite3 database The bot interacts with u
 
 ---
 
-## **Features**
-- Fetch word definitions
-- Provide synonyms and antonyms
-- User-friendly interaction through Telegram
-- Configurable environment setup
-
----
-
 ## **Setup Instructions**
 
 Follow these steps to set up and run the bot:
