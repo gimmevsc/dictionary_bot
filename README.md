@@ -1,6 +1,6 @@
 # **Dictionary Bot for Telegram**
 
-This project is a **Telegram bot** designed to provide dictionary functionalities such as word definitions, synonyms, and more. The bot interacts with users on Telegram and processes their requests.
+The bot stores client vocabulary in an SQLite3 database The bot interacts with users on Telegram and processes their requests.
 
 ---
 
